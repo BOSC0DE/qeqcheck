@@ -34,6 +34,10 @@ def main(argv):
         cnf.append(adapter.circuitToCNF(o, node_to_literal_map, lambda n: S.newVar()))
         to_dimacs(cnf, os.path.splitext(args.bench)[0] + "_" + o.name + ".qcnf")
 
+    for i in inputs:
+        print("%s : %d" % (i.name, node_to_literal_map[i]))
+    for o in outputs:
+        print("%s : %d" % (o.name, node_to_literal_map[o]))
 
 if __name__ == '__main__':
     main(sys.argv)
