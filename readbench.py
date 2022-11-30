@@ -48,7 +48,9 @@ def readFileObject(fobj):
                 elif gate_type == 'NOT':
                     g = ckt.NotGate(*fanins)
                 elif gate_type == 'XOR':
-                    g = ckt.XorGate(*fanins)
+                    g1 = ckt.XorGate(*fanins)
+                    g2 = ckt.XorGate(ckt.AndGate(*fanins), g1)
+                    g = ckt.NotGate(g2)
                 elif gate_type == 'XNOR':
                     g = ckt.XnorGate(*fanins)
                 elif gate_type == 'NAND':
